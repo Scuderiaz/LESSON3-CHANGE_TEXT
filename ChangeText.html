@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Text and Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('your-image1-url.jpg'); /* Initial background image */
+            background-size: cover; /* Make sure the background covers the whole page */
+            text-align: center;
+            padding: 50px;
+        }
+        p {
+            font-size: 18px;
+            padding: 10px;
+            display: inline-block;
+            white-space: pre-line; /* Preserves line breaks */
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <p id="message">Click the button to change this text.</p>
+    <br>
+    <button onclick="changeTextAndColor()">Click Me</button>
+
+    <script>
+        let message = ["NO", "PAIN", "NO", "GAIN"];
+        let index = 0;
+        let backgroundImages = [
+            "url(IMAGE/1.jpg)",
+            "url(IMAGE/2.jpg)",
+            "url(IMAGE/3.jpg)",
+            "url(IMAGE/4.jpg)"
+        ];
+
+        function changeTextAndColor() {
+            var messageElement = document.getElementById("message");
+            var bodyElement = document.body;
+
+            if (index < message.length) {
+                messageElement.innerText = message[index];
+                index++;
+            } else {
+                messageElement.innerText = message[0];
+                index = 1;
+            }
+            messageElement.style.color = index % 2 === 0 ? "blue" : "red";
+            bodyElement.style.backgroundImage = backgroundImages[index % backgroundImages.length];
+            bodyElement.style.backgroundSize = "cover";
+        }
+    </script>
+</body>
+</html>
